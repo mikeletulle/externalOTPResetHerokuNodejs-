@@ -20,9 +20,9 @@ express()
   
   // Salesforce Connected App credentials
   const clientId = '3MVG9Gm6vbdjgMWTzmptOaQNO8RDVRUyVAdt6l_cNM84yFrD88JRJfcY3B9Y.cYNyKeNxN6tm4S8poipdp3vn';
-  const clientSecret = '5895406378190204BE33EAB49E924F51A8966473DFE714E343E7B641484E3425';
+  const clientSecret = 'xxx';
   const username = 'mike@aug24.sdo';
-  const password = 'salesforce512';
+  const password = 'xxx';
   const authUrl = 'https://login.salesforce.com/services/oauth2/token';
   
   // HTML form to input Salesforce User ID
