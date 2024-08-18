@@ -9,10 +9,12 @@ This repository is part of a two-repository solution. The Salesforce-side code c
 
 This Node.js application serves as a middleware between Salesforce and Heroku, handling the generation and verification of OTP links. The JWT Bearer Flow is used to authenticate with Salesforce via a connected app, enabling secure API interactions.
 
-The Node.js app authenticate's with Salesforce's connect application, generates a random token, creates a custom object called a Password Reset Token with that token value related to whatever user has the user ID you supply (18 char object id), and then generates a one time password link containing that token. 
+The Node.js app authenticate's with Salesforce's connected application, generates a random token, creates a custom object called a Password Reset Token with that token value related to whatever user has the user ID you supply (18 char object id), and then generates a one time password link containing that token. 
 In reality the link would be emailed to that user's email address or sent via something like WhatsApp to them.  
 
 ## Setup Instructions
+Follow the setup steps listed in the related repository for the Salesforce side such as setting up the connected app, custom object and Experience cloud site. ( https://github.com/mikeletulle/externalOTPResetSFDC ) 
+
 
 ### 1. Create a Self-Signed Certificate
 
@@ -36,7 +38,7 @@ bash
 
 git push heroku main
 
-3. Set Up the Salesforce Connected App
+3. Add the cert to the Salesforce Connected App
 
 In Salesforce, navigate to Setup > App Manager > New Connected App.
 Configure the connected app with the following settings:
@@ -50,10 +52,10 @@ Upload the certificate.crt file created earlier.
 Set the audience to https://login.salesforce.com for production or https://test.salesforce.com for sandbox.
 Save the connected app and note the Consumer Key and Consumer Secret.
 
-Follow the other setup steps listed in the related repoisitory for the Salesforce side such as setting up the custom object and Experience cloud site. ( https://github.com/mikeletulle/externalOTPResetSFDC ) 
+
 
 4.  Deploy and Test
-Deploy the application to Heroku and test the end-to-end flow by initiating a password reset through Salesforce.
+Deploy the application to Heroku and test the end-to-end flow by initiating a password reset through this Node.js app . You will need to supply the User ID of a Salesforce User who's password you will like to reset. These can be found in the url when you click on a user in setup. 
 
 
 
